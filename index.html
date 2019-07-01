@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="game">
+        <h1>Crystal Collector</h1>
+        <p>You will be given a random number at the start of the game.</p>
+        <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+        <p>You win by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>
+        <p>the value of each crystal is hidden from you until you click on it.</p>
+        <p>Each time when the game starts, the game will change the value of each crystal.</p>
+        <p>Wins</p>
+        <p>Losses</p>
+        <p>Total Score</p>
+    </div>
+
+    <script type="text/javascript">
+    
+        var randomNumber = Math.floor(Math.floor()*121)+19;
+
+        var Wins = 0;
+        var Losses = 0;
+        var totalScore = 0;
+
+        document.onclick = function (event) {
+
+            var userChoice = event.key;
+            var number = randomNumber[Math.floor(Math.random()*randomNumber)];
+
+            console.log(randomNumber);
+
+            $(document).ready(function){
+            var userChoice = $("#img1").click(function() {Math.floor(Math.floor()*12)+1});
+            var userChoice = $("#img2").click(function() {Math.floor(Math.floor()*12)+1});
+            var userChoice = $("#img3").click(function() {Math.floor(Math.floor()*12)+1});
+            var userChoice = $("#img4").click(function() {Math.floor(Math.floor()*12)+1});
+            });
+
+                if (userChoice === randomNumber){
+                    wins++;
+                } 
+                else if (userChoice > randomNumber){
+                    losses++;
+                }
+
+                var html=
+                "<h1>Crystal Collector</h1>"
+                "<p>You will be given a random number at the start of the game.</p>"
+                "<p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>"
+                "<p>You win by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>"
+                "<p>the value of each crystal is hidden from you until you click on it.</p>"
+                "<p>Each time when the game starts, the game will change the value of each crystal.</p>"
+                "<p>Wins</p>"
+                "<p>Losses</p>"
+                "<p>Total Score</p>"
+        };
+
+
+    </script>
+    
+</body>
+</html>
