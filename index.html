@@ -1,93 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
     <div id="game">
         <h1>Crystal Collector</h1>
         <p>You will be given a random number at the start of the game.</p>
-        <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
-        <p>You win by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>
+        <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your
+            total score.</p>
+        <p>You win by matching your total score to a random number, you lose the game if your total score goes above the
+            random number.</p>
         <p>the value of each crystal is hidden from you until you click on it.</p>
         <p>Each time when the game starts, the game will change the value of each crystal.</p>
-        <p>Wins</p>
-        <p>Losses</p>
-        <p>Total Score</p>
-
-        <!-- <img src="assets/images/kendrick1.jpg" alt="crystal1" width="50" height="50">
-        <img src="#" alt="crystal2">
-        <img src="#" alt="crystal3">
-        <img src="#" alt="crystal4"> -->
-
-        <!-- <img src="#img1" alt="crystal4"> -->
-
-        <button id="img1"> click me </button>
-
+        <p>Wins: <span id="totalWins"></span></p>
+        <p>Losses: <span id="totalLosses"></span></p>
+        <p>Total Score: <span id="score"></span></p>
 
     </div>
 
+    <div class="buttons">
+        <img class="image" id="crystal1" src="assets/images/crystal 1.png" alt="" width="200" height="200">
+        <img class="image" id="crystal2" src="assets/images/crystal 2.png" alt="" width="200" height="200">
+        <img class="image" id="crystal3" src="assets/images/crystal 3.jpg" alt="" width="200" height="200">
+        <img class="image" id="crystal4" src="assets/images/crystal 4.png" alt="" width="200" height="200">
+    </div>
+
+    <button id="crystal"> click me </button>
+
     <script type="text/javascript">
-    
-        var randomNumber = Math.floor(Math.floor()*121)+19;
+        $(document).ready(function () {
 
-        var wins = 0;
-        var losses = 0;
-        var totalScore = 0;
+            var randomNumber = Math.floor(Math.random() * 121) + 19;
 
-        var rand  = Math.floor(Math.random() * 12) + 1;
+            console.log("Computer Number: " + randomNumber);
 
-        var img1 = $("#img1").on("click", function(){
-            
-            // console.log(rand)
-            // return rand
-        })
+            $("#mainNumber").text(randomNumber);
 
+            var num1 = Math.floor(Math.random() * 13) + 1;
+            var num2 = Math.floor(Math.random() * 13) + 1;
+            var num3 = Math.floor(Math.random() * 13) + 1;
+            var num4 = Math.floor(Math.random() * 13) + 1;
 
+            var wins = 0;
+            var losses = 0;
+            var totalScore = 0;
 
-        // document.onclick = function (event) {
+            $("#totalWins").text(wins);
+            $("#totalLosses").text(losses);
 
-        //     var userChoice = event.key;
-            var number = randomNumber[Math.floor(Math.random()*randomNumber)];
+            function reset() {
+                var randomNumber = Math.floor(Math.random() * 121 + 19);
+                console.log(randomNumber);
+                $("#mainNumber").text(randomNumber)
 
-            // console.log(randomNumber);
+                var num1 = Math.floor(Math.random() * 12 + 1);
+                var num2 = Math.floor(Math.random() * 12 + 1);
+                var num3 = Math.floor(Math.random() * 12 + 1);
+                var num4 = Math.floor(Math.random() * 12 + 1);
+
+                $("#totalScore").text(totalScore);
+            }
+
+            function winner() {
+                alert("Ayyy You Won!!!");
+                wins++;
+                $("#totalWins").text(wins);
+                reset();
+            }
+
+            function loser() {
+                alert("Ah Man You Lost!!!");
+                losses++;
+                $("#totalLosses").text(losses);
+                reset();
+            }
 
             //$(document).ready(function){
-            var userChoice = $("#img").click(function() {Math.floor(Math.random()*12)+1});
-            var userChoice = $("#img").click(function() {Math.floor(Math.random()*12)+1});
-            var userChoice = $("#img").click(function() {Math.floor(Math.random()*12)+1});
-            var userChoice = $("#img").click(function() {Math.floor(Math.random()*12)+1});
-            //}
+            $("#crystal1").on("click", function () {
+                totalScore = totalScore + num1;
+                console.log("new totalScore=" + totalScore);
+                $("#score").text(totalScore)
 
-                if (userChoice === randomNumber){
-                    wins++;
-                } 
-                else if (userChoice > randomNumber){
-                    losses++;
+                if (totalScore === randomNumber) {
+                    winner();
+                } else if (totalScore > randomNumber) {
+                    loser();
                 }
+            })
 
-                var html=
+            $("#crystal2").on("click", function () {
+                totalScore = totalScore + num2;
+                console.log("new totalScore=" + totalScore);
+                $("#score").text(totalScore)
+
+                if (totalScore === randomNumber) {
+                    winner();
+                } else if (totalScore > randomNumber) {
+                    loser();
+                }
+            })
+
+            $("#crystal3").on("click", function () {
+                totalScore = totalScore + num3;
+                console.log("new totalScore=" + totalScore);
+                $("#score").text(totalScore)
+
+                if (totalScore === randomNumber) {
+                    winner();
+                } else if (totalScore > randomNumber) {
+                    loser();
+                }
+            })
+
+            $("#crystal4").on("click", function () {
+                totalScore = totalScore + num4;
+                console.log("new totalScore=" + totalScore);
+                $("#score").text(totalScore)
+
+                if (totalScore === randomNumber) {
+                    winner();
+                } else if (totalScore> randomNumber) {
+                    loser();
+                }
+            })
+            
+            var html =
                 "<h1>Crystal Collector</h1>" +
                 "<p>You will be given a random number at the start of the game.</p>" +
                 "<p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>" +
                 "<p>You win by matching your total score to a random number, you lose the game if your total score goes above the random number.</p>" +
                 "<p>the value of each crystal is hidden from you until you click on it.</p>" +
                 "<p>Each time when the game starts, the game will change the value of each crystal.</p>" +
-                "<p>Wins " + wins + "</p>"
-                "<p>Losses " + losses + "</p>"
-                "<p>Total Score " + totalScore + "</p>";
-        // };
-
-
+                "<p>Wins: " + wins + "</p>" +
+                "<p>Losses: " + losses + "</p>" +
+                "<p>Total Score: " + totalScore + "</p>" +
+            document.querySelector("#game").innerHTML
+        });
     </script>
-    
+
 </body>
+
 </html>
